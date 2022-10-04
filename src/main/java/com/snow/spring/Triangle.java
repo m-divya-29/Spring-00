@@ -3,22 +3,39 @@ package com.snow.spring;
 import java.util.List;
 
 public class Triangle {
-    List<Point> points;
 
-    public List<Point> getPoints() {
-        return points;
+    private Point pointA;
+    private Point pointB;
+    private Point pointC;
+
+    public Point getPointA() {
+        return pointA;
     }
 
-    public void setPoints(List<Point> points) {
-        this.points = points;
+    public void setPointA(Point pointA) {
+        this.pointA = pointA;
+    }
+
+    public Point getPointB() {
+        return pointB;
+    }
+
+    public void setPointB(Point pointB) {
+        this.pointB = pointB;
+    }
+
+    public Point getPointC() {
+        return pointC;
+    }
+
+    public void setPointC(Point pointC) {
+        this.pointC = pointC;
     }
 
     void draw(){
         System.out.println("Triangle drawn at: ");
-        for (Point point :
-                points) {
-            System.out.print(point+" ");
-        }
+        System.out.println(pointA+", "+pointB+", "+pointC);
+
 
 
     }
