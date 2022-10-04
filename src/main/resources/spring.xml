@@ -2,18 +2,20 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
     <bean id="triangle" class="com.snow.spring.Triangle">
-        <!--SETTER: Preset value of variable "type" in class Triangle.
-        <property name="type" value="Right angle triangle"/>-->
-        <!--Constructor injection-->
-        <constructor-arg value="Isosceles triangle"/>
-
+        <property name="pointA" ref="point1"/>
+        <property name="pointB" ref="point2"/>
+        <property name="pointC" ref="point3"/>
     </bean>
-    <bean id="triangle1" class="com.snow.spring.Triangle">
-        <constructor-arg type = "java.lang.String" value="Equilateral Triangle"/>
-        <constructor-arg type= "int" value="20"/>
+    <bean id="point1" class="com.snow.spring.Point">
+        <property name="x" value="0"/>
+        <property name="y" value="0"/>
     </bean>
-    <bean id="triangle2" class="com.snow.spring.Triangle">
-        <constructor-arg index="0" value="30"/>
-        <constructor-arg index="1" value="Right angled triangle"/>
+    <bean id="point2" class="com.snow.spring.Point">
+        <property name="x" value="-20"/>
+        <property name="y" value="0"/>
+    </bean>
+    <bean id="point3" class="com.snow.spring.Point">
+        <property name="x" value="0"/>
+        <property name="y" value="20"/>
     </bean>
 </beans>
