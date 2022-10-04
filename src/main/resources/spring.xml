@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-    <bean id="triangle" class="com.snow.spring.Triangle" />
+    <bean id="triangle" class="com.snow.spring.Triangle">
+        <!--SETTER: Preset value of variable "type" in class Triangle.
+        <property name="type" value="Right angle triangle"/>-->
+        <!--Constructor injection-->
+        <constructor-arg value="Isosceles triangle"/>
+
+    </bean>
+    <bean id="triangle1" class="com.snow.spring.Triangle">
+        <constructor-arg type = "java.lang.String" value="Equilateral Triangle"/>
+        <constructor-arg type= "int" value="20"/>
+    </bean>
+    <bean id="triangle2" class="com.snow.spring.Triangle">
+        <constructor-arg index="0" value="30"/>
+        <constructor-arg index="1" value="Right angled triangle"/>
+    </bean>
 </beans>
