@@ -8,7 +8,7 @@ public class Draw {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
         BeanFactory beanFactory = context;
-        Triangle triangle = (Triangle) beanFactory.getBean("triangle");
+        Triangle triangle = (Triangle) beanFactory.getBean("triangle-alias");
         // triangle.setPointA((Point)beanFactory.getBean("point1")); -->  instead of this, object injection can be done from spring.xml itself
         triangle.draw();
     }
