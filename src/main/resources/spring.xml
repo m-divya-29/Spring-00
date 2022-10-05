@@ -18,9 +18,19 @@
     </bean>
 
     <bean id="pointA" class="com.snow.spring.Point">
-        <property name="x" value="0"/>
-        <property name="y" value="0"/>
+        <!-- get values from properties file -->
+        <property name="x" value="${pointA.X}"/>
+        <property name="y" value="${pointA.Y}"/>
     </bean>
+    <bean class="com.snow.spring.InitializeBeanByBeanPostProcessor"/>
+
+    <bean class="com.snow.spring.MyBeanFactoryPostProcessor"/>
+
+    <!-- PropertySourcesPlaceholderConfigurer: Provide external properties file for values-->
+    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        <property name="locations" value="pointsconfig.properties"/>
+    </bean>
+
     <!-- Aliases -->
     <alias name="triangle" alias="triangle-alias"/>
 </beans>
