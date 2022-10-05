@@ -1,18 +1,12 @@
 package com.snow.spring;
 
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanNameAware;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 
-import java.util.List;
-
-public class Triangle implements ApplicationContextAware, BeanNameAware {
-
+public class Triangle implements InitializingBean, DisposableBean {
     private Point pointA;
     private Point pointB;
     private Point pointC;
-    ApplicationContext applicationContext = null;
 
     public Point getPointA() {
         return pointA;
@@ -41,19 +35,21 @@ public class Triangle implements ApplicationContextAware, BeanNameAware {
     void draw(){
         System.out.println("Triangle drawn at: ");
         System.out.println(pointA+", "+pointB+", "+pointC);
-
-
-
+    }
+    //In order for this to be called, must registerShutdownHook on the app context.
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("Disposable bean destroy called.");
     }
 
     @Override
-    public void setBeanName(String beanName) {
-        System.out.println("Bean name: "+beanName);
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("Initializing Bean afterPropertiesSet method called.");
     }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext)
-            throws BeansException {
-            this.applicationContext = applicationContext;
+    public void customInit(){
+        System.out.println("Custom init called.");
+    }
+    public void customDestroy(){
+        System.out.println("Custom destroy called.");
     }
 }

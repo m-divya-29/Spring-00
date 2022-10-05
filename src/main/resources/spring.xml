@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
-<beans>
-    <!-- Auto wire by name : when the properties and the beans have same name this works -->
-    <bean id="triangle" class="com.snow.spring.Triangle" name="triangle-name" autowire="byName">
+<!-- default-init-method is called for all beans if the method is defined in the bean's class else it's ignored. -->
+<beans default-init-method="customInit">
+    <!-- init-method and destroy-method are specific to the current bean -->
+    <bean id="triangle" class="com.snow.spring.Triangle" name="triangle-name"
+          autowire="byName" destroy-method="customDestroy">
     </bean>
 
     <bean id="pointB" class="com.snow.spring.Point">
