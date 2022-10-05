@@ -14,6 +14,16 @@ public class Triangle implements ApplicationContextAware, BeanNameAware {
     private Point pointC;
     ApplicationContext applicationContext = null;
 
+    public List<Point> getPoints() {
+        return points;
+    }
+
+    public void setPoints(List<Point> points) {
+        this.points = points;
+    }
+
+    private List<Point> points;
+
     public Point getPointA() {
         return pointA;
     }
@@ -41,10 +51,12 @@ public class Triangle implements ApplicationContextAware, BeanNameAware {
     void draw(){
         System.out.println("Triangle drawn at: ");
         System.out.println(pointA+", "+pointB+", "+pointC);
-
-
-
+        System.out.println("List of points");
+        for (Point point: getPoints()) {
+            System.out.print(point);
+        }
     }
+
 
     @Override
     public void setBeanName(String beanName) {

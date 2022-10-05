@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-    <!-- Auto wire by name : when the properties and the beans have same name this works -->
-    <bean id="triangle" class="com.snow.spring.Triangle" name="triangle-name" autowire="byName">
+
+    <bean id="parentTriangle" class="com.snow.spring.Triangle" name="triangle-name">
+        <property name="pointA" ref="pointA"/>
+        <property name="points">
+            <list>
+                <ref bean="pointA"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="triangle1" class="com.snow.spring.Triangle" parent="parentTriangle" >
+        <property name="pointB" ref="pointB"/>
+        <property name="pointC" ref="pointC"/>
+        <!-- Inherits list property from parent bean -->
+        <property name="points">
+            <!--  merge="true" add to the parent list -->
+            <list merge="true">
+                <ref bean="pointB"/>
+                <ref bean="pointC"/>
+            </list>
+        </property>
+    </bean>
+    <!-- traingle2 inherits the list from parent triangle that contains all 3 points (A, B and C) -->
+    <bean id="triangle2" class="com.snow.spring.Triangle" parent="triangle1" >
     </bean>
 
     <bean id="pointB" class="com.snow.spring.Point">
@@ -20,5 +41,5 @@
         <property name="y" value="0"/>
     </bean>
     <!-- Aliases -->
-    <alias name="triangle" alias="triangle-alias"/>
+    <alias name="triangle2" alias="triangle-alias"/>
 </beans>
