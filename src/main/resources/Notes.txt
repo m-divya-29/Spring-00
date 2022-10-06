@@ -1,0 +1,7 @@
+Flow:
+Only once: Bean factory Post Processor(<bean class="com.snow.spring.MyBeanFactoryPostProcessor"/>)
+BeanPostProcessor (Before Bean initialization) (<bean class="com.snow.spring.InitializeBeanByBeanPostProcessor"/>)
+Custom init(<beans default-init-method="customInit">)
+BeanPostProcessor(After initializing)
+DisposableBean destroy method
+Custom destroy

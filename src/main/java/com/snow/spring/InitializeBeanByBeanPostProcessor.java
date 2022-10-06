@@ -6,11 +6,11 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 public class InitializeBeanByBeanPostProcessor implements BeanPostProcessor {
 
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("Before Bean initializing "+beanName);
+        System.out.println("BeanPostProcessor: Before Bean initializing "+beanName);
         return bean;
     }
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("After Bean initializing "+beanName);
+        System.out.println("BeanPostProcessor: After Bean initializing "+beanName);
         return bean;
     }
 }

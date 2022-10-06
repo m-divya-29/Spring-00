@@ -31,6 +31,9 @@
         <property name="locations" value="pointsconfig.properties"/>
     </bean>
 
+    <bean id="circle" class="com.snow.spring.Circle">
+        <property name="center" ref="pointA"/>
+    </bean>
     <!-- Aliases -->
     <alias name="triangle" alias="triangle-alias"/>
 </beans>

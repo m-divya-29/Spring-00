@@ -3,7 +3,7 @@ package com.snow.spring;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
-public class Triangle implements InitializingBean, DisposableBean {
+public class Triangle implements Shape,InitializingBean, DisposableBean {
     private Point pointA;
     private Point pointB;
     private Point pointC;
@@ -32,7 +32,7 @@ public class Triangle implements InitializingBean, DisposableBean {
         this.pointC = pointC;
     }
 
-    void draw(){
+    public void draw(){
         System.out.println("Triangle drawn at: ");
         System.out.println(pointA+", "+pointB+", "+pointC);
     }
