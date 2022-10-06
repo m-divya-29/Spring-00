@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
 <!-- default-init-method is called for all beans if the method is defined in the bean's class else it's ignored. -->
-<beans default-init-method="customInit">
-    <!-- init-method and destroy-method are specific to the current bean -->
+<beans default-init-method="customInit"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <!-- destroy-method is specific to the current bean -->
     <bean id="triangle" class="com.snow.spring.Triangle" name="triangle-name"
-          autowire="byName" destroy-method="customDestroy">
+           destroy-method="customDestroy">
     </bean>
 
     <bean id="pointB" class="com.snow.spring.Point">
@@ -17,7 +25,8 @@
         <property name="y" value="20"/>
     </bean>
 
-    <bean id="pointA" class="com.snow.spring.Point">
+    <bean id="point1" class="com.snow.spring.Point">
+        <qualifier value = "circlerelated"/>
         <!-- get values from properties file -->
         <property name="x" value="${pointA.X}"/>
         <property name="y" value="${pointA.Y}"/>
@@ -32,9 +41,15 @@
     </bean>
 
     <bean id="circle" class="com.snow.spring.Circle">
-       <!-- <property name="center" ref="pointA"/>-->
+        <property name="center" ref="point1"/>
     </bean>
+
+    <!-- below can be replaced by
     <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>-->
+    <context:annotation-config/>
+
+
     <!-- Aliases -->
     <alias name="triangle" alias="triangle-alias"/>
 </beans>
