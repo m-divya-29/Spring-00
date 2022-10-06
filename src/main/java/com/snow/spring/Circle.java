@@ -1,6 +1,9 @@
 package com.snow.spring;
 
+import org.springframework.beans.factory.annotation.Required;
+
 public class Circle implements Shape{
+    @Required
     public void setCenter(Point center) {
         this.center = center;
     }
